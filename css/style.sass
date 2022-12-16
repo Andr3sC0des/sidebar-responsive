@@ -1,0 +1,195 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css")
+
+$very-dark-blue: #120e1d
+$dark-blue: #1b192f
+$background: #e3e9f7
+$interlineado: 1.4rem
+$family: "poppins"
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    font-family: $family
+    -webkit-tap-highlight-color: rgba(0,0,0,0)
+
+html
+    font-size: 14px
+
+body
+    background: $background
+
+.sidebar
+    position: fixed
+    background: $very-dark-blue
+    padding: 1rem
+    border-radius: 0.5rem
+    width: 250px
+    overflow: hidden
+    transition: all 1s
+    &--active
+        width: 70px
+        & .header
+            &__title
+                opacity: 0
+            &__image
+                left: 50%
+        &+ .content
+            left: 70px
+        
+
+.content
+    position: absolute
+    left: 250px
+    transition: all 1s
+    padding: 1rem
+    font-size: 1rem
+    text-align: justify
+
+.header
+    display: flex
+    position: relative
+    align-items: center
+    &__title
+        pointer-events: none
+        color: #fff
+        font-weight: 400
+        opacity: 1
+        transition: all 1s
+    &__image
+        cursor: pointer
+        color: #fff
+        font-size: 1.5rem
+        position: absolute
+        left: 90%
+        transition: all 1s
+        transform: translateX(-50%)
+
+.sidemenu
+    position: relative
+    margin-top: $interlineado
+    &__item
+        list-style-type: none
+    &__anchor
+        position: relative
+        display: flex
+        padding: 1rem
+        color: #fff
+        text-decoration: none
+        font-size: 1.2rem
+        &:hover
+            background: #fff
+            border-radius: 1rem
+            color: $dark-blue
+    &__search
+        position: relative
+        display: flex
+        color: #fff
+        font-size: 1.2rem
+        & .sidemenu__icon
+            padding: 1rem
+            &:hover
+                border-radius: 1rem
+                cursor: pointer
+                background: #fff
+                color: $dark-blue
+
+    &__icon
+        z-index: 100
+    &__input
+        position: absolute
+        border-radius: 1rem
+        width: 100%
+        height: 100%
+        left: 0
+        top: 0
+        padding-left: 50px
+        border: none
+        background: $dark-blue
+        color: #999
+        opacity: 1
+        transition: all 1s
+    &__title
+        position: absolute
+        left: 20%
+        margin-left: 1rem
+        opacity: 1
+        transition: all 1s
+
+
+.sidebar--active
+    & .sidemenu
+        &__title
+            opacity: 0
+        &__input
+            opacity: 0
+
+.footer
+    margin-top: $interlineado
+    background: $dark-blue
+    display: flex
+    align-items: center
+    &__image
+        position: relative
+        opacity: 1
+        border-radius: 2rem
+        display: block
+        align-self: center
+        overflow: hidden
+        margin: 0.5rem 0
+        width: 50px
+        height: 50px
+        transition: all 1s
+        display: flex
+        justify-content: center
+        align-items: center
+        &:hover
+            transform: scale(1.1)
+            cursor: pointer
+        img
+            transform: scale(0.035)
+            
+    &__details
+        margin-left: 1rem
+        display: flex
+        flex-direction: column
+    &__username
+        color: #fff
+        opacity: 1
+        transition: all 1s
+        font-size: 0.85rem
+    &__profesion
+        color: #fff
+        opacity: 1
+        transition: all 1s
+        font-size: 0.85rem
+    &__icon
+        position: absolute
+        left: 75%
+        transition: all 1s
+        color: #fff
+        font-size: 1.2rem
+        padding: 1rem
+        border-radius: 1rem
+        &:hover
+            background: #fff
+            color: $dark-blue
+            cursor: pointer
+
+.sidebar--active
+    & .footer
+        &__image
+            opacity: 0
+        &__username
+            opacity: 0
+        &__profesion
+            opacity: 0
+        &__icon
+            transform: translateX(-50%)
+            left: 50%
+
+@media screen and (max-height: 642px)
+    .sidebar
+        height: 100vh
+        overflow-y: scroll
+        overflow-x: hidden
